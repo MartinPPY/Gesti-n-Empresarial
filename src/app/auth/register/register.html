@@ -1,0 +1,51 @@
+<main class="container-fluid">
+    <section class="row p-4 justify-content-center">
+        <form class="col-lg-5 card p-5 shadow-sm">
+            <h3 class="text-center">Registro de usuario</h3>
+            <p class="text-center">Completa los campos para poder acceder a la aplicación</p>
+
+            <div class="row mb-3">
+                <div class="col-lg">
+                    <label for="username" class="form-label">Nombre de usuario:</label>
+                    <input type="text" class="form-control" id="username" aria-describedby="usernameHelp">
+                    <div class="form-text">Ingresa tu nombre de usuario</div>
+                </div>
+                <div class="col-lg">
+                    <label for="fullname" class="form-label">Nombre completo:</label>
+                    <input type="text" class="form-control" id="fullname" aria-describedby="fullnameHelp">
+                    <div class="form-text">Ingresa tu nombre completo</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electronico:</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <div class="form-text">Ingresa tu correo electronico</div>
+
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="password">
+                <div class="form-text">Ingresa tu contraseña</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Tipo de empleado</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-around">
+                <a routerLink="/forgot-password" class="text-decoration-none">Recuperar contraseña</a>
+                <a routerLink="/log-in" class="text-decoration-none">¿Ya tienes una cuenta? Iniciar Sesión</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Iniciar sesión</button>
+
+        </form>
+    </section>
+</main>

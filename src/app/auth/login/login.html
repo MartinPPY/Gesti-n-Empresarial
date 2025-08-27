@@ -1,0 +1,27 @@
+<main class="container-fluid">
+    <section class="row p-4 justify-content-center">
+        <form class="col-lg-5 card p-5 shadow-sm">
+            <h3 class="text-center">Inicio de sesión</h3>
+            <p class="text-center">Ingresa tus credenciales para acceder</p>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electronico:</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <div class="form-text">Ingresa tu correo electronico</div>
+                
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" id="password">
+                <div class="form-text">Ingresa tu contraseña</div>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-around">
+                <a routerLink="/forgot-password" class="text-decoration-none">¿Olvidaste tu contraseña?</a>
+                <a routerLink="/register" class="text-decoration-none">Registrarse</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Iniciar sesión</button>
+
+        </form>
+    </section>
+</main>
