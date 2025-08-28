@@ -1,18 +1,33 @@
 <main class="container-fluid">
     <section class="row p-4 justify-content-center">
-        <form class="col-lg-5 card p-5 shadow-sm">
+        <form class="col-lg-5 card p-5 shadow-sm" [formGroup]="form" (ngSubmit)="login()">
+            @if(form.invalid && submitted ){
+            <div class="alert alert-danger" role="alert">
+                ¡Ha ocurrido un error!. Revisa tus credenciales e intenta de nuevo.
+            </div>
+            }
             <h3 class="text-center">Inicio de sesión</h3>
             <p class="text-center">Ingresa tus credenciales para acceder</p>
             <div class="mb-3">
                 <label for="email" class="form-label">Correo electronico:</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                    formControlName="email">
                 <div class="form-text">Ingresa tu correo electronico</div>
-                
+                @if(hasError('email','required')){
+                <div class="text-danger mt-2">El correo es obligatorio</div>
+                }
+                @if (hasError('email','email')) {
+                <div class="text-danger mt-2">El correo no es valido</div>
+                }
+
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" formControlName="password">
                 <div class="form-text">Ingresa tu contraseña</div>
+                @if(hasError('password','required')){
+                <div class="text-danger mt-2">La contraseña es obligatoria</div>
+                }
             </div>
 
             <div class="mb-3 d-flex justify-content-around">
