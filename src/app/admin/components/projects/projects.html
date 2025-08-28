@@ -1,0 +1,56 @@
+<main class="container-fluid">
+    <section class="row p-4">
+        <article class="col d-flex align-items-center">
+            <h2>Gestión de proyectos</h2>
+        </article>
+
+        <article class="col-6 col-lg-3 d-flex justify-content-end align-items-center">
+            <a class="btn btn-dark">Nuevo proyecto</a>
+        </article>
+    </section>
+</main>
+
+<main class="container-fluid">
+    <section class="row p-4">
+        <article class="col-lg card p-2">
+            <h5 class="card-title">Lista de usuarios</h5>
+            <h6 class="card-subtitle">Gestiona todos los usuarios del sistema y sus roles</h6>
+            <form class="mt-3 p-2 d-flex gap-4">
+
+                <input type="text" class="form-control mb-3" placeholder="Buscar proyecto...">
+
+                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+                    <option selected>Filtrar por estado</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Empleado</option>
+                    <option value="3">Cliente</option>
+                </select>
+            </form>
+            <div class="row p-4">
+                <div class="col-lg-4 p-2">
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">Sistema CRM</h5>
+                            <span class="badge text-bg-primary">Completado</span>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
+                            <h6>10/07/2025</h6>
+                            <h6>17/07/2025</h6>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-between align-items-center">
+                            <h6>5 miembros</h6>
+                            <h6>Manager: Pia Miranda</h6>
+                        </div>
+                        <div class="mt-3 d-flex justify-content-end gap-2">
+                            <a class="btn btn-light border border-light-subtle"><img src="/assets/icons/edit.svg"
+                                    width="20"></a>
+                            <a class="btn btn-light border border-light-subtle"> <img src="/assets/icons/delete.svg"
+                                    width="20"> </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </article>
+    </section>
+</main>
