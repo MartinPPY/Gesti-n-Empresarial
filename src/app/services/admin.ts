@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { routes } from '../app.routes';
+
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { route } from './route';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,13 @@ export class Admin {
 
 
   getUsers(): Observable<any> {
-    return this.http.get(`${routes}/admin/users`)
+    return this.http.get(`${route}/admin/users`)
   }
+
+  deleteUser(email: string): Observable<any> {
+    return this.http.delete(`${route}/admin/user/${email}`);
+  }
+
+  
 
 }

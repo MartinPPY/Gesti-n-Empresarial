@@ -37,19 +37,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (item of users; track $index) {
                         <tr>
-                            <th scope="row">Pia Miranda</th>
-                            <td>pia@gmail.com</td>
-                            <td>Project Manager</td>
+                            <th scope="row">{{item.name}} {{item.lastname}}</th>
+                            <td>{{item.email}}</td>
+                            <td>{{item.role}}</td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <a class="btn btn-light border border-light-subtle"><img
                                             src="/assets/icons/edit.svg" width="20"></a>
-                                    <a class="btn btn-light border border-light-subtle"> <img
-                                            src="/assets/icons/delete.svg" width="20"> </a>
+                                    <button class="btn btn-light border border-light-subtle"
+                                        (click)="deleteUser(item.email)"> <img src="/assets/icons/delete.svg"
+                                            width="20"> </button>
                                 </div>
                             </td>
                         </tr>
+                        }
                     </tbody>
                 </table>
             </div>
