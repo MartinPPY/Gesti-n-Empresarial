@@ -6,6 +6,7 @@ export interface User {
 }
 
 export interface Project {
+    id: number,
     name: string,
     date_init: string,
     date_end: string,

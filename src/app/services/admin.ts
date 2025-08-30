@@ -32,6 +32,28 @@ export class Admin {
     return this.http.get(`${route}/admin/projects`)
   }
 
+  getProject(name: string, dateInit: string, dateEnd: string, state: string, id: number): Observable<any> {
+    return this.http.get(`${route}/admin/project`, {
+      params: {
+        name: name,
+        dateInit: dateInit,
+        dateEnd: dateEnd,
+        state: state,
+        id: id
+      }
+    })
+  }
+
+  updateProject(name: string, dateInit: string, dateEnd: string, state: string, id: number): Observable<any> {
+    return this.http.put(`${route}/admin/project`, { name, dateInit, dateEnd, state, id })
+  }
+
+  deleteProject(id: number): Observable<any> {
+    return this.http.delete(`${route}/admin/project/${id}`)
+  }
+
+
+
 
 
 

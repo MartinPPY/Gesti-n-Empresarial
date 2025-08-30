@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Admin } from '../../../services/admin';
-import { User } from '../../models/users';
+import { User } from '../../models/interfaces';
 import Swal from 'sweetalert2';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Auth } from '../../../services/auth';
