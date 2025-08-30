@@ -24,6 +24,14 @@ export class Admin {
     return this.http.get(`${route}/admin/user`, { params: { name: name, role: role } });
   }
 
+  addProject(name: string, dateInit: string, dateEnd: string): Observable<any> {
+    return this.http.post(`${route}/admin/project`, { name, dateInit, dateEnd })
+  }
+
+  getProjects(): Observable<any> {
+    return this.http.get(`${route}/admin/projects`)
+  }
+
 
 
 
