@@ -23,7 +23,10 @@ export class Projects implements OnInit {
     state: ['No iniciado', [Validators.required]]
   })
 
-
+  filterForm: FormGroup = this.fb.group({
+    search: [''],
+    state: ['']
+  })
 
   projects: Project[] = []
 
@@ -167,7 +170,22 @@ export class Projects implements OnInit {
         )
       }
     })
+  }
+
+  filterProjects() {
+
+    const { search, state } = this.filterForm.value
+
+    this.adminService.filterProjects(search, state).subscribe({
+      next: (res: any) => {
+        this.projects = res
+      },
+      error: (err: any) => {
+        console.error(err)
+      }
+    })
 
   }
+
 
 }

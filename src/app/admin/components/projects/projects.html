@@ -15,16 +15,19 @@
         <article class="col-lg card p-2">
             <h5 class="card-title">Lista de usuarios</h5>
             <h6 class="card-subtitle">Gestiona todos los usuarios del sistema y sus roles</h6>
-            <form class="mt-3 p-2 d-flex gap-4">
+            <form class="mt-3 p-2 d-flex gap-4" [formGroup]="filterForm" (ngSubmit)="filterProjects()">
 
-                <input type="text" class="form-control mb-3" placeholder="Buscar proyecto...">
+                <input type="text" class="form-control mb-3" placeholder="Buscar proyecto..." formControlName="search">
 
-                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example">
+                <select class="form-select form-select-sm mb-3" aria-label=".form-select-sm example" formControlName="state">
                     <option value="">Filtrar por estado</option>
                     <option value="No iniciado">No iniciado</option>
                     <option value="En proceso">En proceso</option>
                     <option value="Terminado">Terminado</option>
                 </select>
+
+                <button type="submit" class="btn btn-dark mb-3" >Filtrar</button>
+
             </form>
             <div class="row p-4">
                 @for (item of projects; track $index) {

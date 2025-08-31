@@ -52,6 +52,15 @@ export class Admin {
     return this.http.delete(`${route}/admin/project/${id}`)
   }
 
+  filterProjects(search: string, state: string): Observable<any> {
+    return this.http.get(`${route}/admin/filter-projects`, {
+      params: {
+        search: search,
+        state: state
+      }
+    })
+  }
+
 
 
 
