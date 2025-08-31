@@ -5,7 +5,7 @@
         </article>
 
         <article class="col-6 col-lg-3 d-flex justify-content-end align-items-center">
-            <a class="btn btn-dark">Nueva tarea</a>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva tarea</button>
         </article>
     </section>
 </main>
@@ -39,7 +39,6 @@
                         <tr>
                             <th scope="col">Tarea</th>
                             <th scope="col">Proyecto</th>
-                            <th scope="col">Asignado</th>
                             <th scope="col">Prioridad</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Acciones</th>
@@ -49,7 +48,6 @@
                         <tr>
                             <th scope="row">Diseño de interfaz de usuario</th>
                             <td><span class="badge text-bg-info">Sistema CRM</span></td>
-                            <td>Pia Miranda</td>
                             <td><span class="badge text-bg-danger">Alta</span></td>
                             <td><span class="badge text-bg-danger">No completada</span></td>
                             <td>
@@ -68,3 +66,88 @@
         </article>
     </section>
 </main>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Nueva Tarea</h1>
+                    <p>Completa la información para crear una nueva tarea.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="d-flex flex-column gap-2" [formGroup]="taskForm" (ngSubmit)="addTask()">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre de la tarea:</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                            formControlName="name">
+                        <div class="form-text">Ingresa el nombre de la tarea</div>
+                        @if(hasError('name','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Estado</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="state">
+                            <option value="No iniciado">No iniciado</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Terminado">Terminado</option>
+                        </select>
+                        <div class="form-text">Ingresa el estado del proyecto</div>
+                        @if(hasError('state','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Prioridad</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="priority">
+                            <option value="Baja">Baja</option>
+                            <option value="Mediana">Mediana</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                        <div class="form-text">Ingresa la prioridad de la tarea</div>
+                        @if(hasError('priority','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Empleado:</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="employeeId">
+                            @for (item of employees; track $index) {
+                            <option [value]="item.id">{{item.name}} {{item.lastname}} </option>
+                            }
+                        </select>
+                        <div class="form-text">Asigna la tarea a un empleado</div>
+                        @if(hasError('employeeId','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Proyecto:</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="projectId">
+                            @for (item of projects; track $index) {
+                            <option [value]="item.id">{{item.name}}</option>
+                            }
+                        </select>
+                        <div class="form-text">Asigna la tarea a un proyecto</div>
+                        @if(hasError('projectId','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <button type="submit" class="btn btn-dark">Crear proyecto </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

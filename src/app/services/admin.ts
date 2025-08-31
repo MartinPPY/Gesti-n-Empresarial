@@ -61,6 +61,14 @@ export class Admin {
     })
   }
 
+  getEmployees(): Observable<any> {
+    return this.http.get(`${route}/admin/employees`)
+  }
+  addTask(name: string, state: string, priority: string, employeeId: number, projectId: number): Observable<any> {
+    return this.http.post(`${route}/admin/task`, { name, state, priority, employeeId, projectId })
+  }
+
+
 
 
 
