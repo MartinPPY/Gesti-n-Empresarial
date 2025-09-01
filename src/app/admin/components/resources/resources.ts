@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Project, Resource } from '../../models/interfaces';
 import { Admin } from '../../../services/admin';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-resources',
@@ -50,7 +51,13 @@ export class Resources implements OnInit {
     const { name, projectId } = this.resourceForm.value
     this.adminService.addResource(name, parseInt(projectId)).subscribe({
       next: (res: any) => {
-        console.log('recurso agregado')
+        Swal.fire({
+          icon: 'success',
+          text: 'Recurso agregado correctamente',
+          timer: 2000
+        })
+        this.getResources()
+        this.resourceForm.reset()
       }
     })
   }
@@ -81,7 +88,13 @@ export class Resources implements OnInit {
     console.log(name, projectId, this.resourceId)
     this.adminService.updateResource(name, parseInt(projectId), this.resourceId).subscribe({
       next: (res: any) => {
-        console.log(res)
+        Swal.fire({
+          icon: 'success',
+          text: 'Recurso actualizado',
+          timer: 2000
+        })
+
+        this.getResources()
       }
     })
   }

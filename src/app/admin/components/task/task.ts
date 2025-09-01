@@ -53,10 +53,21 @@ export class Task implements OnInit {
 
     this.adminServices.addTask(name, state, priority, employeeId, projectId).subscribe({
       next: (res: any) => {
-        console.log(res)
+        Swal.fire({
+          icon: 'success',
+          text: 'Tarea agregada correctamente',
+          timer: 2000
+        })
+        this.taskForm.reset()
+        this.getTasks()
       },
       error: (err: any) => {
         console.error(err)
+        Swal.fire({
+          icon: 'error',
+          text: 'No se ha podido agregar la tarea!',
+          timer: 2000
+        })
       }
     })
 
@@ -115,6 +126,7 @@ export class Task implements OnInit {
           timer: 2000
         })
         this.getTasks()
+        this.taskForm.reset()
 
       }
     })

@@ -41,6 +41,15 @@ export class Projects implements OnInit {
   }
 
   addProject() {
+
+    if (this.projectForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Revisa que los campos esten completos'
+      })
+      return
+    }
+
     const { name, dateInit, dateEnd } = this.projectForm.value
 
     console.log(this.projectForm.value)

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -8,5 +8,11 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   styleUrl: './admin.scss'
 })
 export class Admin {
+
+  private router:Router = inject(Router)
+
+  logOut(){
+    this.router.navigate(['/log-in'])
+  }
 
 }  

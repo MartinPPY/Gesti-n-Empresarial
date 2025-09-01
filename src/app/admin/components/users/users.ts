@@ -100,22 +100,31 @@ export class Users implements OnInit {
   }
 
   addUser() {
+
+    if (this.userForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Revisa que todos los campos esten completos'
+      })
+      return
+    }
+
     const { name, lastName, email, password, role } = this.userForm.value;
 
     this.authService.register(name!, lastName!, email!, password!, role!).subscribe({
       next: (res: any) => {
         Swal.fire({
-          icon:'success',
-          text:'Usuario agregado'
+          icon: 'success',
+          text: 'Usuario agregado'
         })
         this.getUsers()
       },
-      error:(err:any)=>{
+      error: (err: any) => {
         Swal.fire({
-          icon:'error',
-          title:'¡Ha ocurrido un error!',
-          text:'No se ha podido agregar a este usuario',
-          timer:2000
+          icon: 'error',
+          title: '¡Ha ocurrido un error!',
+          text: 'No se ha podido agregar a este usuario',
+          timer: 2000
         })
         console.error(err)
       }
