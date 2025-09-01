@@ -28,5 +28,6 @@ export interface Tasks {
 export interface Resource {
     id:number,
     name:string,
-    project_name:string,    
+    project_name:string,
+    project_id:number    
 }

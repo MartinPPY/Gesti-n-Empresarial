@@ -97,12 +97,25 @@ export class Admin {
 
   /* Recursos */
 
-  getResources():Observable<any>{
+  getResources(): Observable<any> {
     return this.http.get(`${route}/admin/resources`)
   }
 
   addResource(name: string, projectId: number): Observable<any> {
     return this.http.post(`${route}/admin/resource`, { name, projectId })
+  }
+
+  getResource(id: number): Observable<any> {
+    return this.http.get(`${route}/admin/resource/${id}`)
+  }
+
+
+  updateResource(name: string, projectId: number, id: number): Observable<any> {
+    return this.http.put(`${route}/admin/resource`, { name, projectId, id })
+  }
+
+  filterResources(search: string): Observable<any> {
+    return this.http.get(`${route}/admin/filter-resources`, { params: { search: search } })
   }
 
 

@@ -15,9 +15,9 @@
         <article class="col-lg card p-2">
             <h5 class="card-title">Recursos Materiales</h5>
             <h6 class="card-subtitle">Gestiona equipos, software e infraestructura de la empresa</h6>
-            <form class="mt-3 p-2 d-flex gap-4">
+            <form class="mt-3 p-2 d-flex gap-4" [formGroup]="filterForm" (ngSubmit)="filterResources()">
 
-                <input type="text" class="form-control mb-3" placeholder="Buscar recurso...">
+                <input type="text" class="form-control mb-3" placeholder="Buscar recurso..." formControlName="search">
                 <button type="submit" class="btn btn-dark mb-3">Filtrar</button>
 
             </form>
@@ -31,20 +31,23 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @for (item of resources; track $index) {
                         <tr>
-                            @for (item of resources; track $index) {
+
                             <th scope="row">{{item.name}}</th>
                             <td><span class="badge text-bg-info">{{item.project_name}}</span></td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a class="btn btn-light border border-light-subtle"><img
-                                            src="/assets/icons/edit.svg" width="20"></a>
+                                    <button class="btn btn-light border border-light-subtle" data-bs-toggle="modal"
+                                        data-bs-target="#editResource" (click)="getResource(item.id)"><img
+                                            src="/assets/icons/edit.svg" width="20"></button>
                                     <a class="btn btn-light border border-light-subtle"> <img
                                             src="/assets/icons/delete.svg" width="20"> </a>
                                 </div>
                             </td>
-                            }
+
                         </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -91,6 +94,51 @@
                     </div>
 
                     <button type="submit" class="btn btn-dark">Crear recursos </button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editResource" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar recurso</h1>
+                    <p>Completa la información para editar el recurso.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="d-flex flex-column gap-2" [formGroup]="resourceForm" (ngSubmit)="editResource()">
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombre del recurso:</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                            formControlName="name">
+                        <div class="form-text">Ingresa el nombre del recurso</div>
+                        @if(hasError('name','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="" class="form-label">Proyecto:</label>
+                        <select class="form-select" aria-label="Default select example" formControlName="projectId">
+                            @for (item of projects; track $index) {
+                            <option [value]="item.id">{{item.name}}</option>
+                            }
+                        </select>
+                        <div class="form-text">Asigna el recurso a un proyecto</div>
+                        @if(hasError('projectId','required')){
+                        <div class="text-danger mt-2">El campo es obligatorio</div>
+                        }
+                    </div>
+
+                    <button type="submit" class="btn btn-dark">Aplicar cambios </button>
 
                 </form>
             </div>

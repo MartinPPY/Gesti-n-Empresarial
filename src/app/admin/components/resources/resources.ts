@@ -19,8 +19,14 @@ export class Resources implements OnInit {
     name: ['', [Validators.required]],
     projectId: ['', [Validators.required]]
   })
+
+  filterForm: FormGroup = this.fb.group({
+    search: ['']
+  })
+
   projects: Project[] = []
-  resources:Resource[] = []
+  resources: Resource[] = []
+  resourceId: number = 0
 
   ngOnInit(): void {
     this.getProjects()
@@ -49,12 +55,45 @@ export class Resources implements OnInit {
     })
   }
 
-  getResources(){
+  getResources() {
     this.adminService.getResources().subscribe({
-      next:(res:Resource[])=>{
+      next: (res: Resource[]) => {
         this.resources = res
       }
     })
   }
+
+  getResource(id: number) {
+    this.adminService.getResource(id).subscribe({
+      next: (res: Resource[]) => {
+        this.resourceForm.setValue({
+          name: res[0].name,
+          projectId: res[0].project_id,
+        })
+
+        this.resourceId = res[0].id
+      }
+    })
+  }
+
+  editResource() {
+    const { name, projectId } = this.resourceForm.value
+    console.log(name, projectId, this.resourceId)
+    this.adminService.updateResource(name, parseInt(projectId), this.resourceId).subscribe({
+      next: (res: any) => {
+        console.log(res)
+      }
+    })
+  }
+
+  filterResources() {
+    const { search } = this.filterForm.value
+    this.adminService.filterResources(search).subscribe({
+      next: (res: Resource[]) => {
+        this.resources = res
+      }
+    })
+  }
+
 
 }
