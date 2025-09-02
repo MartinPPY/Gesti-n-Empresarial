@@ -5,7 +5,8 @@
         </article>
 
         <article class="col-6 col-lg-3 d-flex justify-content-end align-items-center">
-            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nueva tarea</button>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"> <img
+                    src="/assets/icons/add.svg" width="20"> Nueva tarea</button>
         </article>
     </section>
 </main>
@@ -52,10 +53,30 @@
                     <tbody>
                         @for (item of tasks; track $index) {
                         <tr>
-                            <th scope="row">{{item.name}}</th>
-                            <td><span class="badge text-bg-info">{{item.project}}</span></td>
-                            <td><span class="badge text-bg-danger">{{item.priority}}</span></td>
-                            <td><span class="badge text-bg-danger">{{item.state}}</span></td>
+                            <th scope="row"> <img src="/assets/icons/task.svg" width="20"> {{item.name}}</th>
+                            <td><span class="badge text-bg-light">{{item.project}}</span></td>
+                            <td>
+                                @if (item.priority === 'Alta') {
+                                <span class="badge text-bg-danger">{{item.priority}}</span>
+                                }
+                                @if (item.priority === 'Mediana') {
+                                <span class="badge text-bg-warning">{{item.priority}}</span>
+                                }
+                                @if (item.priority === 'Baja') {
+                                <span class="badge text-bg-success">{{item.priority}}</span>
+                                }
+                            </td>
+                            <td>
+                                @if (item.state === 'No iniciado') {
+                                <span class="badge text-bg-danger">{{item.state}}</span>
+                                }
+                                @if (item.state === 'En proceso') {
+                                <span class="badge text-bg-warning">{{item.state}}</span>
+                                }
+                                @if (item.state === 'Terminado') {
+                                <span class="badge text-bg-success">{{item.state}}</span>
+                                }
+                            </td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <button class="btn btn-light border border-light-subtle" data-bs-toggle="modal"

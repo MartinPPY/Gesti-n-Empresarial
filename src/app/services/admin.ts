@@ -13,7 +13,7 @@ export class Admin {
 
 
   getUsers(): Observable<any> {
-    return this.http.get(`${route}/admin/users`)
+    return this.http.get(`${route}/admin/users`,{withCredentials:true})
   }
 
   deleteUser(email: string): Observable<any> {

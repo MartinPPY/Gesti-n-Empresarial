@@ -11,7 +11,7 @@ export class Auth {
   private http: HttpClient = inject(HttpClient);
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post(`${route}/auth/log-in`, { email, password })
+    return this.http.post(`${route}/auth/log-in`, { email, password },{ withCredentials: true })
   }
 
   register(name: string, lastName: string, email: string, password: string, role: string): Observable<any> {

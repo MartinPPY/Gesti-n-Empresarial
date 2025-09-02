@@ -5,7 +5,7 @@
         </article>
 
         <article class="col-6 col-lg-3 d-flex justify-content-end align-items-center">
-            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Recurso</button>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"> <img src="/assets/icons/add.svg" width="20"> Nuevo Recurso</button>
         </article>
     </section>
 </main>
@@ -34,8 +34,8 @@
                         @for (item of resources; track $index) {
                         <tr>
 
-                            <th scope="row">{{item.name}}</th>
-                            <td><span class="badge text-bg-info">{{item.project_name}}</span></td>
+                            <th scope="row"> <img src="/assets/icons/resource.svg" width="20"> {{item.name}}</th>
+                            <td><span class="badge text-bg-light">{{item.project_name}}</span></td>
                             <td>
                                 <div class="d-flex gap-2">
                                     <button class="btn btn-light border border-light-subtle" data-bs-toggle="modal"
