@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -7,11 +7,17 @@ import { Router, RouterLink, RouterOutlet } from '@angular/router';
   templateUrl: './admin.html',
   styleUrl: './admin.scss'
 })
-export class Admin {
+export class Admin implements OnInit {
 
-  private router:Router = inject(Router)
+  
+  private router: Router = inject(Router)
 
-  logOut(){
+
+  ngOnInit(): void {
+    
+  }
+
+  logOut() {
     this.router.navigate(['/log-in'])
   }
 
