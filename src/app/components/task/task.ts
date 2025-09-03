@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Project, Tasks, User, } from '../../models/interfaces';
-import { Admin } from '../../../services/admin';
+import { Project, Tasks, User, } from '../../admin/models/interfaces';
+import { Admin } from '../../services/admin';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -114,6 +114,9 @@ export class Task implements OnInit {
   }
 
   updateTask() {
+
+    
+
     const { name, state, priority } = this.taskForm.value
     const employeeId = parseInt(this.taskForm.get('employeeId')?.value)
     const projectId = parseInt(this.taskForm.get('projectId')?.value)

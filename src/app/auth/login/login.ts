@@ -45,6 +45,12 @@ export class Login {
         if(response.role === 'Administrador'){
           this.router.navigate(['/admin']);
         }
+        if(response.role === 'Project Manager'){
+          this.router.navigate(['project-manager'])
+        }
+        if(response.role === 'Empleado'){
+          this.router.navigate(['employee'])
+        }
       },
       error: (error) => {
         console.error('Login failed', error);

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Admin } from '../../../services/admin';
+import { Admin } from '../../services/admin';
 import Swal from 'sweetalert2';
-import { Project } from '../../models/interfaces';
+import { Project } from '../../admin/models/interfaces';
 
 @Component({
   selector: 'app-projects',

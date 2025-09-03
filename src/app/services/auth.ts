@@ -22,4 +22,8 @@ export class Auth {
     return this.http.get(`${route}/auth/is-authenticated`, { withCredentials: true })
   }
 
+  logOut():Observable<any>{
+    return this.http.get(`${route}/auth/log-out`, { withCredentials: true })
+  }
+
 }

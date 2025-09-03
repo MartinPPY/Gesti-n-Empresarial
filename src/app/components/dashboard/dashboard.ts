@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Admin } from '../../../services/admin';
+import { Admin } from '../../services/admin';
 import Swal from 'sweetalert2';
 
 @Component({

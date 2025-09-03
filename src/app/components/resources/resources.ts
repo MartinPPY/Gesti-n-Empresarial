@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Project, Resource } from '../../models/interfaces';
-import { Admin } from '../../../services/admin';
+import { Project, Resource } from '../../admin/models/interfaces';
+import { Admin } from '../../services/admin';
 import Swal from 'sweetalert2';
 
 @Component({
