@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { Login } from './auth/login/login';
 import { Register } from './auth/register/register';
 import { Admin } from './admin/admin';
-import { Dashboard } from './components/dashboard/dashboard';
 import { Users } from './components/users/users';
 import { Projects } from './components/projects/projects';
 import { Task } from './components/task/task';
@@ -22,8 +21,7 @@ export const routes: Routes = [
         canActivate: [adminGuard],
         canActivateChild: [adminGuard],
         children: [
-            { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', component: Dashboard },
+            { path: '', redirectTo: 'users', pathMatch: 'full' },
             { path: 'users', component: Users },
             { path: 'projects', component: Projects },
             { path: 'tasks', component: Task },

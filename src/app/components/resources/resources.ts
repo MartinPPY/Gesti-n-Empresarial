@@ -131,12 +131,12 @@ export class Resources implements OnInit {
       if (result.isConfirmed) {
         this.adminService.deleteResource(id).subscribe({
           next: (res) => {
-            this.getResources()
             Swal.fire(
               '¡Borrado!',
               'El recurso ha sido borrado.',
               'success'
             )
+            this.getResources()
           },
           error: (err) => {
             console.error(err);
