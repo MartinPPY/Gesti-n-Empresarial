@@ -48,6 +48,15 @@ export class Resources implements OnInit {
   }
 
   addResource() {
+
+    if (this.resourceForm.invalid) {
+      Swal.fire({
+        icon: 'error',
+        text: 'Revisa que todos los campos esten completos'
+      })
+      return
+    }
+
     const { name, projectId } = this.resourceForm.value
     this.adminService.addResource(name, parseInt(projectId)).subscribe({
       next: (res: any) => {
@@ -104,6 +113,41 @@ export class Resources implements OnInit {
     this.adminService.filterResources(search).subscribe({
       next: (res: Resource[]) => {
         this.resources = res
+      }
+    })
+  }
+
+  deleteResource(id: number) {
+    Swal.fire({
+      title: '¿Estás seguro de borrar  este recurso?',
+      text: "¡No podras revertir esta acción!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonText: 'Cancelar',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, borrar recurso'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.adminService.deleteResource(id).subscribe({
+          next: (res) => {
+            this.getResources()
+            Swal.fire(
+              '¡Borrado!',
+              'El recurso ha sido borrado.',
+              'success'
+            )
+          },
+          error: (err) => {
+            console.error(err);
+          }
+        })
+      } else {
+        Swal.fire(
+          'Cancelado',
+          'El recurso no ha sido borrada.',
+          'error'
+        )
       }
     })
   }

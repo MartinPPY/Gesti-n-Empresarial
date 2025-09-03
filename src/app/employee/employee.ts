@@ -5,6 +5,7 @@ import { Tasks } from '../admin/models/interfaces';
 import { Auth } from '../services/auth';
 import { lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-employee',
@@ -50,8 +51,21 @@ export class Employee implements OnInit {
     }
 
     const { state } = this.taskForm.value
-    const response = await lastValueFrom(this.taskServices.updateTask(name, state, priority, employeeId, projectId, id))
-    console.log(response)
+    
+    try {
+      const response = await lastValueFrom(this.taskServices.updateTask(name, state, priority, employeeId, projectId, id))
+      Swal.fire({
+        icon:'success',
+        text:'Progreso actualizado',
+        timer:2000
+      })
+    } catch (error: any) {
+      Swal.fire({
+        icon:'error',
+        text:'No se ha podido actualizar el progreso'
+      })
+    }
+
     this.getTasks()
   }
 
